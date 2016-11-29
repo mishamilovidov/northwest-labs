@@ -8,6 +8,7 @@ namespace NorthwestLabsPrep.Models
         public AssayType()
         {
             Assay = new HashSet<Assay>();
+            AssayTypeLiterature = new HashSet<AssayTypeLiterature>();
             AssayTypeTest = new HashSet<AssayTypeTest>();
             OrderDetails = new HashSet<OrderDetails>();
         }
@@ -19,6 +20,7 @@ namespace NorthwestLabsPrep.Models
         public double? MaxCost { get; set; }
 
         public virtual ICollection<Assay> Assay { get; set; }
+        public virtual ICollection<AssayTypeLiterature> AssayTypeLiterature { get; set; }
         public virtual ICollection<AssayTypeTest> AssayTypeTest { get; set; }
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }

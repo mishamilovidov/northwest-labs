@@ -7,12 +7,12 @@ namespace NorthwestLabsPrep.Models
     {
         public Literature()
         {
-            TestTypeLiterature = new HashSet<TestTypeLiterature>();
+            AssayTypeLiterature = new HashSet<AssayTypeLiterature>();
         }
 
         public int LiteratureId { get; set; }
         public string LiteratureDescription { get; set; }
 
-        public virtual ICollection<TestTypeLiterature> TestTypeLiterature { get; set; }
+        public virtual ICollection<AssayTypeLiterature> AssayTypeLiterature { get; set; }
     }
 }

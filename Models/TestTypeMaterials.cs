@@ -7,6 +7,7 @@ namespace NorthwestLabsPrep.Models
     {
         public int TestTypeId { get; set; }
         public int MaterialId { get; set; }
+        public double? MaterialUsed { get; set; }
 
         public virtual Materials Material { get; set; }
         public virtual TestType TestType { get; set; }

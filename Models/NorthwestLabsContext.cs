@@ -8,6 +8,7 @@ namespace NorthwestLabsPrep.Models
     {
         public virtual DbSet<Assay> Assay { get; set; }
         public virtual DbSet<AssayType> AssayType { get; set; }
+        public virtual DbSet<AssayTypeLiterature> AssayTypeLiterature { get; set; }
         public virtual DbSet<AssayTypeTest> AssayTypeTest { get; set; }
         public virtual DbSet<ClientContact> ClientContact { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
@@ -32,7 +33,6 @@ namespace NorthwestLabsPrep.Models
         public virtual DbSet<TestMaterials> TestMaterials { get; set; }
         public virtual DbSet<TestResults> TestResults { get; set; }
         public virtual DbSet<TestType> TestType { get; set; }
-        public virtual DbSet<TestTypeLiterature> TestTypeLiterature { get; set; }
         public virtual DbSet<TestTypeMaterials> TestTypeMaterials { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -43,6 +43,7 @@ namespace NorthwestLabsPrep.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Assay>(entity =>
             {
                 entity.HasIndex(e => e.AssayTypeId)
@@ -84,6 +85,36 @@ namespace NorthwestLabsPrep.Models
                 entity.Property(e => e.MinCost).HasColumnName("minCost");
             });
 
+            modelBuilder.Entity<AssayTypeLiterature>(entity =>
+            {
+                entity.HasKey(e => new { e.AssayTypeId, e.LiteratureId })
+                    .HasName("AssayType_Literaturee_PK");
+
+                entity.ToTable("AssayType_Literature");
+
+                entity.HasIndex(e => e.AssayTypeId)
+                    .HasName("assayTypeIDAssayType_Literature");
+
+                entity.HasIndex(e => e.LiteratureId)
+                    .HasName("literatureIDAssayType_Literature");
+
+                entity.Property(e => e.AssayTypeId).HasColumnName("assayTypeID");
+
+                entity.Property(e => e.LiteratureId).HasColumnName("literatureID");
+
+                entity.HasOne(d => d.AssayType)
+                    .WithMany(p => p.AssayTypeLiterature)
+                    .HasForeignKey(d => d.AssayTypeId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("AssayType_LiteratureFK00");
+
+                entity.HasOne(d => d.Literature)
+                    .WithMany(p => p.AssayTypeLiterature)
+                    .HasForeignKey(d => d.LiteratureId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("AssayType_LiteratureFK01");
+            });
+
             modelBuilder.Entity<AssayTypeTest>(entity =>
             {
                 entity.HasKey(e => new { e.AssayTypeId, e.TestSequence })
@@ -97,17 +128,28 @@ namespace NorthwestLabsPrep.Models
                 entity.HasIndex(e => e.TestSequence)
                     .HasName("testSequenceAssayType_Test");
 
+                entity.HasIndex(e => e.TestTypeId)
+                    .HasName("testTypeIDAssayType_Test");
+
                 entity.Property(e => e.AssayTypeId).HasColumnName("assayTypeID");
 
                 entity.Property(e => e.TestSequence).HasColumnName("testSequence");
 
                 entity.Property(e => e.Required).HasColumnName("required");
 
+                entity.Property(e => e.TestTypeId).HasColumnName("testTypeID");
+
                 entity.HasOne(d => d.AssayType)
                     .WithMany(p => p.AssayTypeTest)
                     .HasForeignKey(d => d.AssayTypeId)
                     .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("AssayType_TestFK00");
+
+                entity.HasOne(d => d.TestType)
+                    .WithMany(p => p.AssayTypeTest)
+                    .HasForeignKey(d => d.TestTypeId)
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .HasConstraintName("AssayType_TestFK01");
             });
 
             modelBuilder.Entity<ClientContact>(entity =>
@@ -119,7 +161,7 @@ namespace NorthwestLabsPrep.Models
 
                 entity.Property(e => e.ClientContactEmail)
                     .HasColumnName("clientContactEmail")
-                    .HasMaxLength(40);
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ClientContactFirstName)
                     .HasColumnName("clientContactFirstName")
@@ -161,7 +203,7 @@ namespace NorthwestLabsPrep.Models
 
                 entity.Property(e => e.ClientEmail)
                     .HasColumnName("clientEmail")
-                    .HasMaxLength(20);
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.ClientName)
                     .HasColumnName("clientName")
@@ -257,7 +299,6 @@ namespace NorthwestLabsPrep.Models
                 entity.HasOne(d => d.Assay)
                     .WithMany(p => p.CompoundReceipt)
                     .HasForeignKey(d => d.AssayId)
-                    .OnDelete(DeleteBehavior.Restrict)
                     .HasConstraintName("CompoundReceiptFK02");
 
                 entity.HasOne(d => d.LtnumberNavigation)
@@ -362,7 +403,7 @@ namespace NorthwestLabsPrep.Models
 
                 entity.Property(e => e.LiteratureDescription)
                     .HasColumnName("literatureDescription")
-                    .HasMaxLength(100);
+                    .HasMaxLength(1000);
             });
 
             modelBuilder.Entity<Materials>(entity =>
@@ -757,36 +798,6 @@ namespace NorthwestLabsPrep.Models
                 entity.Property(e => e.TestTypePrice).HasColumnName("testTypePrice");
             });
 
-            modelBuilder.Entity<TestTypeLiterature>(entity =>
-            {
-                entity.HasKey(e => new { e.TestTypeId, e.LiteratureId })
-                    .HasName("TestType_Literature_PK");
-
-                entity.ToTable("TestType_Literature");
-
-                entity.HasIndex(e => e.LiteratureId)
-                    .HasName("literatureIDTestType_Literature");
-
-                entity.HasIndex(e => e.TestTypeId)
-                    .HasName("testTypeIDTestType_Literature");
-
-                entity.Property(e => e.TestTypeId).HasColumnName("testTypeID");
-
-                entity.Property(e => e.LiteratureId).HasColumnName("literatureID");
-
-                entity.HasOne(d => d.Literature)
-                    .WithMany(p => p.TestTypeLiterature)
-                    .HasForeignKey(d => d.LiteratureId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("TestType_LiteratureFK01");
-
-                entity.HasOne(d => d.TestType)
-                    .WithMany(p => p.TestTypeLiterature)
-                    .HasForeignKey(d => d.TestTypeId)
-                    .OnDelete(DeleteBehavior.Restrict)
-                    .HasConstraintName("TestType_LiteratureFK00");
-            });
-
             modelBuilder.Entity<TestTypeMaterials>(entity =>
             {
                 entity.HasKey(e => new { e.TestTypeId, e.MaterialId })
@@ -803,6 +814,8 @@ namespace NorthwestLabsPrep.Models
                 entity.Property(e => e.TestTypeId).HasColumnName("testTypeID");
 
                 entity.Property(e => e.MaterialId).HasColumnName("materialID");
+
+                entity.Property(e => e.MaterialUsed).HasColumnName("materialUsed");
 
                 entity.HasOne(d => d.Material)
                     .WithMany(p => p.TestTypeMaterials)
