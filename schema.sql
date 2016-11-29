@@ -60,7 +60,7 @@ GO
 DROP TABLE TestResults
 GO
 
-DROP TABLE TestType_Literature
+DROP TABLE AssayType_Literature
 GO
 
 DROP TABLE Test
@@ -256,8 +256,8 @@ CREATE TABLE TestResults (
 )
 GO
 
-CREATE TABLE TestType_Literature (
-  testTypeID int NOT NULL,
+CREATE TABLE AssayType_Literature (
+  assayTypeID int NOT NULL,
   literatureID int NOT NULL
 )
 GO
@@ -578,18 +578,18 @@ GO
 CREATE INDEX testSequenceTestResults ON TestResults(testSequence)
 GO
 
-ALTER TABLE TestType_Literature ADD 
-    CONSTRAINT TestType_Literature_PK PRIMARY KEY   
+ALTER TABLE AssayType_Literature ADD 
+    CONSTRAINT AssayType_Literaturee_PK PRIMARY KEY   
     (
-        testTypeID,
+        assayTypeID,
         literatureID
     )  
 GO
 
-CREATE INDEX testTypeIDTestType_Literature ON TestType_Literature(testTypeID)
+CREATE INDEX assayTypeIDAssayType_Literature ON AssayType_Literature(assayTypeID)
 GO
 
-CREATE INDEX literatureIDTestType_Literature ON TestType_Literature(literatureID)
+CREATE INDEX literatureIDAssayType_Literature ON AssayType_Literature(literatureID)
 GO
 
 ALTER TABLE Test ADD 
@@ -863,14 +863,14 @@ ALTER TABLE Test_Employee ADD
     )
 GO
 
-ALTER TABLE TestType_Literature ADD 
-    CONSTRAINT TestType_LiteratureFK00 FOREIGN KEY 
+ALTER TABLE AssayType_Literature ADD 
+    CONSTRAINT AssayType_LiteratureFK00 FOREIGN KEY 
     (
-        testTypeID
-    ) REFERENCES TestType (
-        testTypeID
+        assayTypeID
+    ) REFERENCES AssayType (
+        assayTypeID
     ),
-    CONSTRAINT TestType_LiteratureFK01 FOREIGN KEY 
+    CONSTRAINT AssayType_LiteratureFK01 FOREIGN KEY 
     (
         literatureID
     ) REFERENCES Literature (
