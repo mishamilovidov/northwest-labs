@@ -1,0 +1,124 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using NorthwestLabsPrep.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Northwest Labs</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+    <div class="container body-content">
+        <nav  id="header" class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a asp-area="" asp-controller="home" asp-action="Index" class="navbar-brand">
+                        <!--<img src="~/img/blowout-logo.png" class="img-responsive text-center" id="nav-img">-->
+                        Northwest Labs
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-area="" asp-controller="home" asp-action="Index">Home</a></li>
+                        <!--<li><a asp-area="" asp-controller="rentals" asp-action="Index">Rentals</a></li>-->
+                        <li><a asp-area="" asp-controller="about" asp-action="Index">About</a></li>
+                        <li><a asp-area="" asp-controller="contact" asp-action="Index">Contact</a></li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {                            
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin Dashboard <span class="caret" style="margin-left:5px;"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-area="" asp-controller="admin" asp-action="Index">Overview</a></li>
+                                    <li><a asp-area="" asp-controller="admin" asp-action="CustomersDetail">Customers</a></li>
+                                    <li><a asp-area="" asp-controller="admin" asp-action="OrdersDetail">Orders</a></li>
+                                    <li><a asp-area="" asp-controller="admin" asp-action="IntsrumentsDetail">Instruments</a></li>
+                                    <li><a asp-area="" asp-controller="Manage" asp-action="Index">Your Account</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" onclick="$(this).closest('form').submit()">Log off <i class="glyphicon glyphicon-log-out" style="margin-left:5px;"></i></a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Account" asp-action="Login"><i class="glyphicon glyphicon-log-in" style="margin-right:5px;"></i> Login</a></li>
+                            <!--<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
+                                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Create Account</a></li>
+                                </ul>
+                            </li>-->
+                        }
+                    </ul>
+                    </form>
+                    <!--@await Html.PartialAsync("_LoginPartial")-->
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+
+    </div>
+    <footer>
+        <p class="text-center">&copy; 2016 - Northwest Labs</p>
+    </footer>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/Views/Assets/js/site.js" asp-append-version="true"></script>
+
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.3.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"
+                asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+                asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
