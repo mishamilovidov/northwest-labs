@@ -16,7 +16,7 @@ namespace NorthwestLabsPrep.Models
         public double? MolecularMass { get; set; }
         public double? ActualWeight { get; set; }
         public double? MaximumToleratedDose { get; set; }
-        public int AssayId { get; set; }
+        public int? AssayId { get; set; }
 
         public virtual Assay Assay { get; set; }
         public virtual Compound LtnumberNavigation { get; set; }

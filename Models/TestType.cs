@@ -7,8 +7,8 @@ namespace NorthwestLabsPrep.Models
     {
         public TestType()
         {
+            AssayTypeTest = new HashSet<AssayTypeTest>();
             Test = new HashSet<Test>();
-            TestTypeLiterature = new HashSet<TestTypeLiterature>();
             TestTypeMaterials = new HashSet<TestTypeMaterials>();
         }
 
@@ -18,8 +18,8 @@ namespace NorthwestLabsPrep.Models
         public double? DaysToComplete { get; set; }
         public double? TestTypePrice { get; set; }
 
+        public virtual ICollection<AssayTypeTest> AssayTypeTest { get; set; }
         public virtual ICollection<Test> Test { get; set; }
-        public virtual ICollection<TestTypeLiterature> TestTypeLiterature { get; set; }
         public virtual ICollection<TestTypeMaterials> TestTypeMaterials { get; set; }
     }
 }
