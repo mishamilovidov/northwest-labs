@@ -1,5 +1,4 @@
 # Northwest Labs
----
 
 A prototype web application built in the ASP.NET Framework for Northwest Labs.
 
