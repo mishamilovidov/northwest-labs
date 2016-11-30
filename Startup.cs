@@ -136,8 +136,74 @@ namespace NorthwestLabsPrep
                     template: "{controller=Contact}/{action=email}/{id?}");
 
                 routes.MapRoute(
-                    name: "admin",
-                    template: "{controller=admin}/{action=Index}/{id?}");
+                    name: "systemadmin",
+                    template: "{controller=systemadmin}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "systemadminreports",
+                    template: "{controller=systemadmin}/{action=reports}/{id?}");
+
+                routes.MapRoute(
+                    name: "systemadminaccount",
+                    template: "{controller=systemadmin}/{action=account}/{id?}");
+
+
+
+                routes.MapRoute(
+                    name: "manager",
+                    template: "{controller=manager}/{action=index}/{id?}");
+
+                routes.MapRoute(
+                    name: "manageremployees",
+                    template: "{controller=manager}/{action=employees}/{id?}");
+
+                routes.MapRoute(
+                    name: "managercustomers",
+                    template: "{controller=manager}/{action=customers}/{id?}");
+
+                routes.MapRoute(
+                    name: "managerorders",
+                    template: "{controller=manager}/{action=orders}/{id?}");
+
+                routes.MapRoute(
+                    name: "managersubmitorder",
+                    template: "{controller=manager}/{action=submitorder}/{id?}");
+
+                routes.MapRoute(
+                    name: "managerassays",
+                    template: "{controller=manager}/{action=assays}/{id?}");
+
+                routes.MapRoute(
+                    name: "managerreports",
+                    template: "{controller=manager}/{action=reports}/{id?}");
+
+
+
+                routes.MapRoute(
+                    name: "employee",
+                    template: "{controller=employee}/{action=index}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeecustomers",
+                    template: "{controller=employee}/{action=customers}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeeorders",
+                    template: "{controller=employee}/{action=orders}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeeassays",
+                    template: "{controller=employee}/{action=assays}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeereports",
+                    template: "{controller=employee}/{action=reports}/{id?}");
+
+
+
+                routes.MapRoute(
+                    name: "customer",
+                    template: "{controller=customer}/{action=index}/{id?}");
             });
         }
     }
