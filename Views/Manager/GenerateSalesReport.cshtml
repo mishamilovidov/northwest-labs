@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Generate Sales Report";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="manager" asp-action="index">Manager Dashboard</a></li>
+                <li><a asp-area="" asp-controller="manager" asp-action="reports">Manager Reports</a></li>
+                <li class="active">@ViewData["Title"]</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+     <div class="row text-center" style="margin-top:30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label class="control-label">Select Date Range For Sales Report:</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type="text"  class="form-control" name="daterange" value="11/01/2016 12:30 AM - 12/01/2016 12:00 AM" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="text-center">Category:</h4>
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Assay
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Test
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Date
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Client
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="text-center">Measure:</h4>
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Cost
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Price
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Profit
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary text-center" style="width:100%;">Generate Sales Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY h:mm A'
+        }
+    });
+});
+</script>

@@ -3,5 +3,61 @@
 }
 
 <div class="jumbotron">
-    <h2>@ViewData["Title"]</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="manager" asp-action="index">Employee Dashboard</a></li>
+                <li class="active">@ViewData["Title"]</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-4 well">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">Unscheduled Assays:</h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-center">DNase Footprinting Assay (3-4 Tests)</h5>
+                    <h5 class="text-center">Due Date: 01/21/2017</h5>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default text-center center-block">Schedule Assay</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-center">Bicinchoninic Acid Assay (2-3 Tests)</h5>
+                    <h5 class="text-center">Due Date: 01/21/2017</h5>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default text-center center-block">Schedule Assay</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-center">Nuclear Run-On Assay (2-5 Tests)</h5>
+                    <h5 class="text-center">Due Date: 01/21/2017</h5>
+                </div>
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default text-center center-block">Schedule Assay</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <img class="img-responsive pull-right" style="display: block;max-width: 86%;height: auto;margin: 0 auto;" src="https://s3-us-west-2.amazonaws.com/northwest-labs/img/calendar.png">
+        </div>
+    </div>
+     <div class="row" style="margin-top:30px;">
+        <a asp-controller="employee" asp-action="assaycatalog"><button type="button" class="btn btn-warning pull-right">Edit Assay Catalog</button></a>
+    </div>
 </div>

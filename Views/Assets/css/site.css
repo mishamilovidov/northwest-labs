@@ -357,3 +357,11 @@ fieldset[disabled] .btn-primary.focus {
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+@media (max-width: 767px) {
+    #logged-in-as { text-align:center; }
+}
+
+@media (min-width: 767px) {
+    #logged-in-as { text-align:right; }
+}

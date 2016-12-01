@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Test Schedule";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="employee" asp-action="index">Employee Dashboard</a></li>
+                <li><a asp-area="" asp-controller="employee" asp-action="orders">Orders</a></li>
+                <li class="active">@ViewData["Title"]</li>
+            </ol>
+        </div>
+    </div>
+
+    <h2 class="text-center">@ViewData["Title"]</h2>
+
+    <div class="row text-center" style="margin-top:30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label class="control-label">Select Test Schedule Date Range:</label>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type="text"  class="form-control" name="daterange" value="11/01/2016 12:30 AM - 12/01/2016 12:00 AM" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row text-center" style="margin-top:30px;">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label class="control-label">Select Test Category:</label>
+            <select class="form-control">
+                <option value="volvo">DNase Footprinting Assay Tests</option>
+                <option value="saab">Category 2</option>
+                <option value="opel">Category 2</option>
+                <option value="audi">Category 2</option>
+            </select>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <div class="row" style="margin-top:30px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-12 well">
+            <table class="table table-striped">
+                <tr>
+                    <th>Test</th>
+                    <th>Schedule</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Low Base Running Test</td>
+                    <td>11/01/2016 1:30 PM</td>
+                    <td><span class="text-success text-bold">Complete</span></td>
+                </tr>
+                <tr>
+                    <td>Solute Check Test</td>
+                    <td>11/04/2016 3:30 PM</td>
+                    <td><span class="text-success text-bold">Complete</span></td>
+                </tr>
+                <tr>
+                    <td>Fire Resistance Test</td>
+                    <td>11/13/2016 10:30 PM</td>
+                    <td><span class="text-success text-bold">Complete</span></td>
+                </tr>
+                <tr>
+                    <td>Hunnington Test</td>
+                    <td>11/14/2016 1:30 PM</td>
+                    <td><span class="text-success text-bold">Complete</span></td>
+                </tr>
+                <tr>
+                    <td>4th to 50 Test</td>
+                    <td>11/30/2016 2:30 PM</td>
+                    <td><span class="text-warning text-bold">In Progress</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    
+</div>
+ 
+<script type="text/javascript">
+$(function() {
+    $('input[name="daterange"]').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'MM/DD/YYYY h:mm A'
+        }
+    });
+});
+</script>
