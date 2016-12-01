@@ -2,12 +2,17 @@
   {
     "outputFileName": "wwwroot/css/site.min.css",
     "inputFiles": [
-      "Views/Assets/css/site.css"
+      "Views/Assets/css/site.css",
+      "Views/Assets/css/bootstrap-datetimepicker.min.css"
     ]
   },
   {
     "outputFileName": "wwwroot/js/site.min.js",
     "inputFiles": [
+      "Views/Assets/js/moment.js",
+      "Views/Assets/js/collapse.js",
+      "Views/Assets/js/transition.js",
+      "Views/Assets/js/bootstrap-datetimepicker.min.js",
       "Views/Assets/js/site.js"
     ],
     "minify": {

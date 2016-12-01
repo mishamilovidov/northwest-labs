@@ -23,7 +23,32 @@ namespace NorthwestLabsPrep.Controllers
             return View();
         }
 
+        public IActionResult TestSchedule()
+        {
+            return View();
+        }
+
+        public IActionResult CompoundReceipt()
+        {
+            return View();
+        }
+
+        public IActionResult UploadTestResults()
+        {
+            return View();
+        }
+
         public IActionResult Assays()
+        {
+            return View();
+        }
+
+        public IActionResult AssayCatalog()
+        {
+            return View();
+        }
+
+        public IActionResult UpdateAssayCatalogInfo()
         {
             return View();
         }

@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Upload Test Results";
+}
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-9">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="home" asp-action="Index">Home</a></li>
+                <li><a asp-area="" asp-controller="employee" asp-action="index">Employee Dashboard</a></li>
+                <li><a asp-area="" asp-controller="employee" asp-action="orders">Orders</a></li>
+                <li class="active">@ViewData["Title"]</li>
+            </ol>
+        </div>
+        <div class="col-md-3">
+            <i><h5 id="logged-in-as">Order #197</h5></i>
+        </div>
+    </div>
+
+    <h2 class="text-center">@ViewData["Title"]</h2>
+    <h4 class="text-center">Listeraninanine - DNase Footprinting Assay</h4>
+    <h4 class="text-center">Test Tube #104500-1</h4>
+
+    <form asp-controller="" asp-action="" method="post" class="form-horizontal" style="margin-top:30px;" role="form">
+        <div class="form-group row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="form-group row text-center">
+                    <p>Upload Raw Test Results: </p>
+                    <label class="btn btn-default btn-file inline-block">
+                        Browse for File <input type="file" style="display: none;">
+                    </label>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12 text-center">
+                        <label class="control-label">Test Comments</label>
+                        <textarea class="form-control" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-12 text-center">
+                        <label class="control-label">Update Test Status</label>
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <input type="radio"> <span class="text-info text-bold">Planned</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <input type="radio"> <span class="text-warning text-bold">In Progress</span>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <input type="radio"> <span class="text-success text-bold">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary text-center" style="width:100%;">Upload Test Results</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

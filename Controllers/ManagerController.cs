@@ -33,12 +33,27 @@ namespace NorthwestLabsPrep.Controllers
             return View();
         }
 
+        public IActionResult OrderStatus()
+        {
+            return View();
+        }
+
         public IActionResult Assays()
         {
             return View();
         }
 
         public IActionResult Reports()
+        {
+            return View();
+        }
+
+        public IActionResult GenerateSalesReport()
+        {
+            return View();
+        }
+
+        public IActionResult GenerateClientReport()
         {
             return View();
         }

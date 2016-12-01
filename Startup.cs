@@ -170,12 +170,24 @@ namespace NorthwestLabsPrep
                     template: "{controller=manager}/{action=submitorder}/{id?}");
 
                 routes.MapRoute(
+                    name: "managerorderstatus",
+                    template: "{controller=manager}/{action=orderstatus}/{id?}");
+
+                routes.MapRoute(
                     name: "managerassays",
                     template: "{controller=manager}/{action=assays}/{id?}");
 
                 routes.MapRoute(
                     name: "managerreports",
                     template: "{controller=manager}/{action=reports}/{id?}");
+
+                routes.MapRoute(
+                    name: "managergeneratesalesreport",
+                    template: "{controller=manager}/{action=generatesalesreport}/{id?}");
+
+                routes.MapRoute(
+                    name: "managergenerateclientreport",
+                    template: "{controller=manager}/{action=generateclientreport}/{id?}");
 
 
 
@@ -192,8 +204,28 @@ namespace NorthwestLabsPrep
                     template: "{controller=employee}/{action=orders}/{id?}");
 
                 routes.MapRoute(
+                    name: "employeetestschedule",
+                    template: "{controller=employee}/{action=testschedule}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeecompoundreceipt",
+                    template: "{controller=employee}/{action=compoundreceipt}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeeuploadtestresults",
+                    template: "{controller=employee}/{action=uploadtestresults}/{id?}");
+
+                routes.MapRoute(
                     name: "employeeassays",
                     template: "{controller=employee}/{action=assays}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeeassaycatalog",
+                    template: "{controller=employee}/{action=assaycatalog}/{id?}");
+
+                routes.MapRoute(
+                    name: "employeeupdateassaycataloginfo",
+                    template: "{controller=employee}/{action=updateassaycataloginfo}/{id?}");
 
                 routes.MapRoute(
                     name: "employeereports",
